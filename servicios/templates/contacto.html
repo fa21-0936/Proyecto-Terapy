@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% block title %}Contacto - Terapy{% endblock %}
+
+{% block content %}
+<h1>Contacto</h1>
+<p>Envía un mensaje y nos pondremos en contacto contigo. También puedes comunicarte con la UNPHU a través de sus cuentas oficiales.</p>
+
+{% if messages %}
+{% for msg in messages %}
+<div class="alert alert-{{ msg.tags }} alert-dismissible fade show" role="alert">
+    {{ msg }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+<form method="post" class="row g-3">
+    {% csrf_token %}
+
+    <div class="col-md-6">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+
+    <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="col-12">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+</form>
+
+<hr>
+
+<h4>Síguenos</h4>
+<p>Redes oficiales UNPHU:</p>
+<ul>
+    <li><a href="https://www.instagram.com/unphu/" target="_blank">Instagram</a></li>
+    <li><a href="https://www.facebook.com/unphu" target="_blank">Facebook</a></li>
+</ul>
+
+{% endblock %}

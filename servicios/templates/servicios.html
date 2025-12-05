@@ -1,0 +1,94 @@
+
+{% extends 'base.html' %}
+{% block title %}Servicios - Terapy{% endblock %}
+
+{% block content %}
+<h1>Servicios</h1>
+<p>Encuentra la sesión que mejor se adapta a tus necesidades. Reserva desde nuestra plataforma o contacta para más información.</p>
+
+{% if messages %}
+{% for msg in messages %}
+<div class="alert alert-{{ msg.tags }} alert-dismissible fade show" role="alert">
+    {{ msg }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="row">
+{% for x in modeloservicios %}
+<div class="col-md-4 mb-3">
+    <div class="card h-100">
+
+        <!-- Imagen según nombre del servicio -->
+        {% if x.nombre == "Terapia psicológica" %}
+            <img src="https://cdn.prod.website-files.com/6165ed3d14364c72a597fe4e/63f83f3ca582987dfdafb975_Imagen%20hablando.webp" class="card-img-top" alt="Terapia psicológica">
+        {% elif x.nombre == "Terapia física" %}
+            <img src="https://fisioterapiaplayadelcarmen.com/wp-content/uploads/2025/04/1z9a0641.jpg" class="card-img-top" alt="Terapia física">
+        {% elif x.nombre == "Terapia de pareja" %}
+            <img src="https://www.terapify.com/blog/wp-content/uploads/2023/05/terapia-de-pareja-te%CC%81cnicas.jpg" class="card-img-top" alt="Terapia de pareja">
+        {% endif %}
+
+        <div class="card-body">
+            <h5 class="card-title">{{ x.nombre }}</h5>
+            <p class="card-text">{{ x.descripcion }}</p>
+            <p class="fw-bold">Desde ${{ x.precio }}</p>
+
+            <button class="btn btn-primary reservar-btn"
+                data-nombre="{{ x.nombre }}"
+                data-bs-toggle="modal"
+                data-bs-target="#reservaModal">
+                Reservar
+            </button>
+        </div>
+    </div>
+</div>
+{% empty %}
+<p>No hay servicios registrados.</p>
+{% endfor %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="reservaModal" tabindex="-1">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form method="post" action="{% url 'reservar_servicio' %}">
+        {% csrf_token %}
+
+        <div class="modal-header">
+            <h5 class="modal-title">Reservar servicio</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+            <p id="servicioSeleccionado" class="fw-bold"></p>
+
+            <input type="hidden" id="servicioInput" name="servicio">
+
+            <div class="mb-3">
+                <label class="form-label">Tu nombre</label>
+                <input type="text" class="form-control" name="nombre" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Fecha preferida</label>
+                <input type="date" class="form-control" name="fecha" required>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Enviar reserva</button>
+        </div>
+
+        </form>
+    </div>
+</div>
+</div>
+
+{% endblock %}

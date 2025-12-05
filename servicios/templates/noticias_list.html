@@ -1,0 +1,184 @@
+
+{% extends 'base.html' %}
+{% block title %}Noticias - Terapy{% endblock %}
+
+{% block content %}
+
+<h1>Noticias y recursos sobre terapias</h1>
+<p class="text-muted">
+    Recursos, consejos y novedades relevantes para pacientes, terapeutas y personas interesadas en bienestar emocional.
+</p>
+
+<div class="row">
+
+    <!-- NOTICIAS -->
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Avances recientes en tecnología médica</h5>
+                <p class="card-subtitle mb-2 text-muted">01 de septiembre, 2025</p>
+                <p class="card-text">
+                    Nuevas herramientas diagnósticas están cambiando la forma en que se evalúan diversas condiciones.
+                </p>
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalNoticia1">
+                    Leer más
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Nuevas políticas de salud pública</h5>
+                <p class="card-subtitle mb-2 text-muted">15 de octubre, 2025</p>
+                <p class="card-text">
+                    Autoridades anuncian medidas para mejorar la accesibilidad y la calidad del servicio médico.
+                </p>
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalNoticia2">
+                    Leer más
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Investigaciones sobre nuevos tratamientos</h5>
+                <p class="card-subtitle mb-2 text-muted">10 de noviembre, 2025</p>
+                <p class="card-text">
+                    Estudios recientes buscan alternativas más seguras y menos invasivas para diversas condiciones.
+                </p>
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalNoticia3">
+                    Leer más
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr>
+
+<section>
+    <h3>Guía rápida: Cómo preparar tu sesión</h3>
+    <ul>
+        <li>Llega 5–10 minutos antes de la hora programada.</li>
+        <li>Ten claro el objetivo de la sesión (1–3 puntos principales).</li>
+        <li>Lleva información importante (medicinas, notas de seguimiento, etc.).</li>
+        <li>Si es online, prueba la conexión y cámara 10 minutos antes.</li>
+    </ul>
+</section>
+
+<section class="mt-4">
+    <h3>Políticas de agenda</h3>
+    <p>
+        Se recomienda cancelar con al menos 24 horas de anticipación. Las cancelaciones tardías pueden tener cargos
+        según la política del profesional.
+    </p>
+</section>
+
+<!-- MODALES -->
+
+<!-- MODALES -->
+<div class="modal fade" id="modalNoticia1" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Avances recientes en tecnología médica</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+
+        <p>
+            En los últimos meses se han presentado innovaciones importantes en el campo de la tecnología médica,
+            enfocadas principalmente en mejorar la precisión diagnóstica y reducir los tiempos de recuperación.
+        </p>
+        <p>
+            Entre los avances más destacados se encuentran los sistemas de imagen asistidos por inteligencia 
+            artificial, capaces de identificar anomalías con una precisión mayor a la de métodos tradicionales.
+        </p>
+
+        <h5 class="mt-4">Fuentes y enlaces relacionados</h5>
+        <ul>
+            <li><a href="https://www.mayoclinic.org/es" target="_blank">Mayo Clinic – Tecnología médica</a></li>
+            <li><a href="https://medlineplus.gov/spanish/" target="_blank">MedlinePlus en español</a></li>
+        </ul>
+
+    </div>
+        <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalNoticia2" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">Nuevas políticas de salud pública</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+    <div class="modal-body">
+
+        <p>
+            Recientemente se han implementado nuevas políticas orientadas a mejorar el acceso universal a los
+            servicios de salud, modernizar procesos administrativos y fortalecer los programas preventivos.
+        </p>
+        <p>
+            Estas medidas incluyen actualizaciones en los protocolos de atención primaria, campañas de educación
+            sanitaria y nuevos lineamientos sobre digitalización de expedientes clínicos.
+        </p>
+
+        <h5 class="mt-4">Fuentes y enlaces relacionados</h5>
+        <ul>
+            <li><a href="https://www.who.int/es" target="_blank">OMS – Organización Mundial de la Salud (español)</a></li>
+            <li><a href="https://www.paho.org/es" target="_blank">OPS – Organización Panamericana de la Salud</a></li>
+            </li>
+        </ul>
+
+    </div>
+        <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalNoticia3" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">Investigaciones sobre nuevos tratamientos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+
+        <p>
+            Diversos centros de investigación están evaluando tratamientos experimentales con menor impacto
+            secundario y mayor eficacia. Muchas de estas iniciativas buscan enfoques personalizados basados
+            en biomarcadores, genética y respuesta inmunológica.
+        </p>
+        <p>
+            Además, varias universidades e instituciones están probando dispositivos médicos de liberación 
+            controlada que optimizan la dosis y reducen errores en la administración.
+        </p>
+
+        <h5 class="mt-4">Fuentes y enlaces relacionados</h5>
+        <ul>
+            <li><a href="https://www.cun.es/actualidad" target="_blank">
+                Clínica Universidad de Navarra – Actualidad Médica</a></li>
+        </ul>
+
+    </div>
+        <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

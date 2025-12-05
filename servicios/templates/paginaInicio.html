@@ -1,0 +1,127 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio - Terapy{% endblock %}
+
+{% block content %}
+
+<!-- Mensajes del sistema -->
+<div class="container mt-3">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<!-- Bienvenida -->
+<div class="row align-items-center mb-5 mt-3">
+    <div class="col-md-6">
+
+        <h1 class="display-5 fw-bold mb-3">Bienvenido a Terapy</h1>
+
+        <p class="lead mb-4">
+            Reserva sesiones de terapia, consulta nuestros servicios y accede a recursos para tu bienestar.
+        </p>
+
+        <a href="{% url 'Servicios' %}" class="btn btn-primary me-2">Ver servicios</a>
+        <a href="{% url 'contacto' %}" class="btn btn-outline-primary">Contáctanos</a>
+
+    </div>
+
+    <div class="col-md-6 text-center">
+        <img src="https://cdn-ilbfokj.nitrocdn.com/NxXRkPJfinWExxpiHOTyErxGqOIfpGhi/assets/images/optimized/rev-7564453/centrodeterapiaintegral.cl/wp-content/uploads/2024/12/psicologa-atiende-online.jpg"
+            alt="Bienestar"
+            class="img-fluid rounded shadow-sm">
+    </div>
+</div>
+
+<!-- Carrusel -->
+<div id="mainCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner rounded">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <img src="https://www.ecuavisa.com/binrepository/1200x675/0c38/1200d600/none/11705/ETBT/diseno-sin-titulo-2024-09-11t102241_1743490_20240911102428.jpg"
+                class="d-block w-100"
+                alt="Terapia presencial">
+
+            <div class="carousel-caption d-none d-md-block text-start"
+                    style="background: rgba(0, 0, 0, 0.45); padding: 12px; border-radius: 6px;">
+                <h5 class="text-white mb-1">Sesiones presenciales</h5>
+                <p class="text-white mb-0">Ambiente seguro y confidencial para terapia individual.</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <img src="https://hominummexico.com/wp-content/uploads/2020/09/TERAPIA_L%C3%8DNEA-adap.jpg"
+                class="d-block w-100"
+                alt="Terapia online">
+
+            <div class="carousel-caption d-none d-md-block text-start"
+                style="background: rgba(0, 0, 0, 0.45); padding: 12px; border-radius: 6px;">
+                <h5 class="text-white mb-1">Sesiones en línea</h5>
+                <p class="text-white mb-0">Conéctate desde donde estés.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controles -->
+    <button class="carousel-control-prev" type="button"
+            data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+
+    <button class="carousel-control-next" type="button"
+            data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+
+<!-- Sección de beneficios -->
+<section class="mt-5 mb-5">
+    <h2 class="mb-4">Beneficios de elegir Terapy</h2>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <h5 class="mb-2">Atención profesional y confiable</h5>
+            <p class="mb-0">
+                Trabajamos con enfoques terapéuticos actualizados para ofrecerte acompañamiento seguro y efectivo.
+            </p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <h5 class="mb-2">Flexibilidad en la modalidad de atención</h5>
+            <p class="mb-0">
+                Elige entre sesiones presenciales o en línea según tu comodidad y disponibilidad.
+            </p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <h5 class="mb-2">Recursos para tu bienestar</h5>
+            <p class="mb-0">
+                Accede a artículos, guías y noticias que complementan tu proceso terapéutico.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de noticias -->
+<section class="mt-4 mb-5">
+    <h2 class="mb-3">Recursos y noticias</h2>
+
+    <div class="list-group">
+        <a href="{% url 'noticias_list' %}" class="list-group-item list-group-item-action">
+            Ver las últimas noticias y artículos sobre terapias
+        </a>
+    </div>
+</section>
+
+{% endblock %}
