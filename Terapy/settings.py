@@ -8,17 +8,18 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zgun0_%wpu&_67%0dwr=fakje3glg%e+9-x2r#*#puu^x3cl+d'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # DEBUG: Local = True / Render = False automáticamente
 DEBUG = 'RENDER' not in os.environ
 
 # Permitir Render + localhost
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    os.environ.get("RENDER_EXTERNAL_HOSTNAME")
-]
+render_hostname = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
+if render_hostname:
+    ALLOWED_HOSTS.append(render_hostname)
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -33,6 +34,10 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    # Whitenoise para servir estáticos en Render
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -60,6 +65,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Terapy.wsgi.application'
 
+
 # Base de datos (Render usará SQLite si no configuras Postgres)
 DATABASES = {
     'default': {
@@ -67,6 +73,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -89,6 +96,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+
 # Static files
 STATIC_URL = 'static/'
 
@@ -98,7 +106,12 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# Whitenoise: permitir archivos comprimidos
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 # Mailtrap
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
